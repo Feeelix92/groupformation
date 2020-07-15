@@ -264,23 +264,23 @@ defined('MOODLE_INTERNAL') || die();
                                             </th>
                                             <td class="range">
                                                 <div id="oobpreviewdd">
-                                                    <div class="oobRow">
-                                                        <input type="checkbox" name="oobRow0">
+                                                    <div class="oobRow" id="oobRow0">
+                                                        <input type="checkbox">
                                                             <label>
                                                                 <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
                                                             </label>
                                                     </div>
-                                                    <div class="oobRow">
-                                                        <input type="checkbox" name="oobRow1">
+                                                    <div class="oobRow" id="oobRow1">
+                                                        <input type="checkbox">
                                                             <label>
                                                                 <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
                                                             </label>
                                                     </div>
-                                                    <div class="oobRow">
-                                                        <input type="checkbox"name="oobRow2">
-                                                        <label>
-                                                            <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
-                                                        </label>
+                                                    <div class="oobRow" id="oobRow2">
+                                                        <input type="checkbox">
+                                                            <label>
+                                                                <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
+                                                            </label>
                                                     </div>
                                                 </div>
 <!--                                                <select id="oobpreviewdd">-->

@@ -439,7 +439,11 @@ require(['jquery', 'jqueryui'], function($) {
                     .appendTo('#previewTopics').html('<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>').append(document.createTextNode(value));
             }
             if (cat == 'oob'){
-                $('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd').text(value);
+                var oobCheckbox = document.createElement('input');
+                oobCheckbox.type = 'checkbox';
+
+                // $('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd').append(oobCheckbox).append(oobCheckboxLabel);
+                $('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd').append(oobCheckbox).text(value);
                 $('.oobRowMulti:first-child', '#oobpreviewddMulti').clone(true).attr('id', $previewRowID +'Multi').appendTo('#oobpreviewddMulti').text(value);
             }
         }
