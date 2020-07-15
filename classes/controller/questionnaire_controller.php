@@ -259,8 +259,8 @@ class mod_groupformation_questionnaire_controller {
 
             $questions = array();
             // TODO comment in when multiselect is supported
-            // $multiselect = $this->store->get_binquestion_multiselect();
-            $multiselect = false;
+            $multiselect = $this->store->get_binquestion_multiselect();
+            //$multiselect = false;
 
             $hasanswer = $this->usermanager->has_answers($this->userid, $category);
 
@@ -512,9 +512,9 @@ class mod_groupformation_questionnaire_controller {
             // Print the header of a table or unordered list.
             $addon = '';
             // TODO comment in when multiselect is supported
-            // if ($category == 'binquestion' && $this->store->get_binquestion_multiselect()) {
-            // $addon = '_multi';
-            // }
+             if ($category == 'binquestion' && $this->store->get_binquestion_multiselect()) {
+             $addon = '_multi';
+             }
             $s .= $table->get_header($addon); // TODO ändere title für multiselect.
 
             foreach ($questions as $q) {
@@ -634,8 +634,8 @@ class mod_groupformation_questionnaire_controller {
         $name = 'mod_groupformation_' . $type . '_question';
         if ($type == 'binquestion') {
 
-            // $multiselect = $this->store->get_binquestion_multiselect();
-            $multiselect = false;
+            $multiselect = $this->store->get_binquestion_multiselect();
+            //$multiselect = false;
             if ($multiselect) {
                 $name = 'mod_groupformation_multiselect_question';
             }

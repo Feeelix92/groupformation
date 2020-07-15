@@ -142,14 +142,16 @@ defined('MOODLE_INTERNAL') || die();
 
                 <br/>
                 <br/>
-                <!-- <div id="oob_multiselect_box oob_in_preview">-->
-                <!-- <h5>--><?php // echo get_string('choose_type', 'groupformation'); ?><!--</h5>-->
-                <!-- <p>--><?php // echo get_string('decide_multiselect', 'groupformation'); ?><!--</p>-->
-                <!-- <label class="gf_label" for="id_js_binquestionmultiselect">-->
-                <!-- <input type="checkbox" id="id_js_binquestionmultiselect"  value="wantMultiselect" />-->
-                <!-- --><?php // echo get_string('multiselect', 'groupformation'); ?>
-                <!-- </label>-->
-                <!-- </div>-->
+                <!-- Start: Multi select-->
+                 <div id="oob_multiselect_box oob_in_preview">
+                 <h5><?php  echo get_string('choose_type', 'groupformation'); ?></h5>
+                 <p><?php  echo get_string('decide_multiselect', 'groupformation'); ?></p>
+                 <label class="gf_label" for="id_js_binquestionmultiselect">
+                 <input type="checkbox" id="id_js_binquestionmultiselect"  value="wantMultiselect" />
+                 <?php  echo get_string('multiselect', 'groupformation'); ?>
+                 </label>
+                 </div>
+                <!-- End: Multi select-->
 
                 <div class="grid">
                     <div id="oob">
@@ -237,6 +239,7 @@ defined('MOODLE_INTERNAL') || die();
                                 <h5>
                                     <?php echo get_string('preview', 'groupformation'); ?>
                                 </h5>
+                                <!-- Start: Preview select-->
                                 <div class="col_m_100" id="oobPreview">
                                     <table class="responsive-table">
                                         <colgroup>
@@ -259,29 +262,92 @@ defined('MOODLE_INTERNAL') || die();
                                                     <?php echo get_string('no_oob_question', 'groupformation'); ?>
                                                 </p>
                                             </th>
-
                                             <td class="range">
-                                                <select id="oobpreviewdd">
-                                                    <option class="oobRow" id="oobRow0">
-                                                        <?php echo get_string('knowledge_dummy',
-                                                                'groupformation'); ?> 1
-                                                    </option>
-                                                    <option class="oobRow" id="oobRow1">
-                                                        <?php echo get_string('knowledge_dummy',
-                                                                'groupformation'); ?> 2
-                                                    </option>
-                                                    <option class="oobRow" id="oobRow2">
-                                                        <?php echo get_string('knowledge_dummy',
-                                                                'groupformation'); ?> 3
-                                                    </option>
-                                                </select>
-
+                                                <div id="oobpreviewdd">
+                                                    <div class="oobRow">
+                                                        <input type="checkbox" name="oobRow0">
+                                                            <label>
+                                                                <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
+                                                            </label>
+                                                    </div>
+                                                    <div class="oobRow">
+                                                        <input type="checkbox" name="oobRow1">
+                                                            <label>
+                                                                <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
+                                                            </label>
+                                                    </div>
+                                                    <div class="oobRow">
+                                                        <input type="checkbox"name="oobRow2">
+                                                        <label>
+                                                            <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
+                                                        </label>
+                                                    </div>
+                                                </div>
+<!--                                                <select id="oobpreviewdd">-->
+<!--                                                    <option class="oobRow" id="oobRow0">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy',
+//                                                                'groupformation'); ?><!-- 1-->
+<!--                                                    </option>-->
+<!--                                                    <option class="oobRow" id="oobRow1">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy',
+//                                                                'groupformation'); ?><!-- 2-->
+<!--                                                    </option>-->
+<!--                                                    <option class="oobRow" id="oobRow2">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy',
+//                                                                'groupformation'); ?><!-- 3-->
+<!--                                                    </option>-->
+<!--                                                </select>-->
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
-
+<!--                                <div class="col_m_100" id="oobPreview">-->
+<!--                                    <table class="responsive-table">-->
+<!--                                        <colgroup>-->
+<!--                                            <col class="firstCol">-->
+<!--                                            <col width="36%">-->
+<!--                                        </colgroup>-->
+<!---->
+<!--                                        <thead>-->
+<!--                                        <tr>-->
+<!--                                            <th scope="col">-->
+<!--                                                --><?php //echo get_string('choose_answer', 'groupformation'); ?>
+<!--                                            </th>-->
+<!--                                            <th></th>-->
+<!--                                        </tr>-->
+<!--                                        </thead>-->
+<!--                                        <tbody id="oneofbinpreview">-->
+<!--                                        <tr class="knowlRow">-->
+<!--                                            <th scope="row">-->
+<!--                                                <p id="oobquestionPreview">-->
+<!--                                                    --><?php //echo get_string('no_oob_question', 'groupformation'); ?>
+<!--                                                </p>-->
+<!--                                            </th>-->
+<!---->
+<!--                                            <td class="range">-->
+<!--                                                <select id="oobpreviewdd">-->
+<!--                                                    <option class="oobRow" id="oobRow0">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy',
+//                                                                'groupformation'); ?><!-- 1-->
+<!--                                                    </option>-->
+<!--                                                    <option class="oobRow" id="oobRow1">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy',
+//                                                                'groupformation'); ?><!-- 2-->
+<!--                                                    </option>-->
+<!--                                                    <option class="oobRow" id="oobRow2">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy',
+//                                                                'groupformation'); ?><!-- 3-->
+<!--                                                    </option>-->
+<!--                                                </select>-->
+<!---->
+<!--                                            </td>-->
+<!--                                        </tr>-->
+<!--                                        </tbody>-->
+<!--                                    </table>-->
+<!--                                </div>-->
+                                <!-- End: Preview select-->
+                                <!-- Start: Preview Multi select-->
                                 <div class="col_m_100" id="oobMultiPreview" style="display:none;">
                                     <table class="responsive-table">
                                         <colgroup>
@@ -324,7 +390,7 @@ defined('MOODLE_INTERNAL') || die();
                                         </tbody>
                                     </table>
                                 </div>
-
+                                <!-- End: Preview Multi select-->
                             </div>
                         </div>
                     </div>
