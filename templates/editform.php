@@ -263,89 +263,39 @@ defined('MOODLE_INTERNAL') || die();
                                                 </p>
                                             </th>
                                             <td class="range">
-                                                <div id="oobpreviewdd">
-                                                    <div class="oobRow" id="oobRow0">
-                                                        <input type="checkbox">
-                                                            <label>
-                                                                <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
-                                                            </label>
-                                                    </div>
-                                                    <div class="oobRow" id="oobRow1">
-                                                        <input type="checkbox">
-                                                            <label>
-                                                                <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
-                                                            </label>
-                                                    </div>
-                                                    <div class="oobRow" id="oobRow2">
-                                                        <input type="checkbox">
-                                                            <label>
-                                                                <?php echo get_string('knowledge_dummy', 'groupformation'); ?><br>
-                                                            </label>
-                                                    </div>
-                                                </div>
-<!--                                                <select id="oobpreviewdd">-->
-<!--                                                    <option class="oobRow" id="oobRow0">-->
-<!--                                                        --><?php //echo get_string('knowledge_dummy',
-//                                                                'groupformation'); ?><!-- 1-->
-<!--                                                    </option>-->
-<!--                                                    <option class="oobRow" id="oobRow1">-->
-<!--                                                        --><?php //echo get_string('knowledge_dummy',
-//                                                                'groupformation'); ?><!-- 2-->
-<!--                                                    </option>-->
-<!--                                                    <option class="oobRow" id="oobRow2">-->
-<!--                                                        --><?php //echo get_string('knowledge_dummy',
-//                                                                'groupformation'); ?><!-- 3-->
-<!--                                                    </option>-->
-<!--                                                </select>-->
+<!--                                                <div id="oobpreviewdd">-->
+<!--                                                    <div class="oobRow" id="oobRow0">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                    <div class="oobRow" id="oobRow1">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                    <div class="oobRow" id="oobRow2">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                            --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                </div>-->
+                                                <select id="oobpreviewdd">
+                                                    <option class="oobRow" id="oobRow0">
+                                                        <?php echo get_string('knowledge_dummy',
+                                                                'groupformation'); ?> 1
+                                                    </option>
+                                                    <option class="oobRow" id="oobRow1">
+                                                        <?php echo get_string('knowledge_dummy',
+                                                                'groupformation'); ?> 2
+                                                    </option>
+                                                    <option class="oobRow" id="oobRow2">
+                                                        <?php echo get_string('knowledge_dummy',
+                                                                'groupformation'); ?> 3
+                                                    </option>
+                                                </select>
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
-<!--                                <div class="col_m_100" id="oobPreview">-->
-<!--                                    <table class="responsive-table">-->
-<!--                                        <colgroup>-->
-<!--                                            <col class="firstCol">-->
-<!--                                            <col width="36%">-->
-<!--                                        </colgroup>-->
-<!---->
-<!--                                        <thead>-->
-<!--                                        <tr>-->
-<!--                                            <th scope="col">-->
-<!--                                                --><?php //echo get_string('choose_answer', 'groupformation'); ?>
-<!--                                            </th>-->
-<!--                                            <th></th>-->
-<!--                                        </tr>-->
-<!--                                        </thead>-->
-<!--                                        <tbody id="oneofbinpreview">-->
-<!--                                        <tr class="knowlRow">-->
-<!--                                            <th scope="row">-->
-<!--                                                <p id="oobquestionPreview">-->
-<!--                                                    --><?php //echo get_string('no_oob_question', 'groupformation'); ?>
-<!--                                                </p>-->
-<!--                                            </th>-->
-<!---->
-<!--                                            <td class="range">-->
-<!--                                                <select id="oobpreviewdd">-->
-<!--                                                    <option class="oobRow" id="oobRow0">-->
-<!--                                                        --><?php //echo get_string('knowledge_dummy',
-//                                                                'groupformation'); ?><!-- 1-->
-<!--                                                    </option>-->
-<!--                                                    <option class="oobRow" id="oobRow1">-->
-<!--                                                        --><?php //echo get_string('knowledge_dummy',
-//                                                                'groupformation'); ?><!-- 2-->
-<!--                                                    </option>-->
-<!--                                                    <option class="oobRow" id="oobRow2">-->
-<!--                                                        --><?php //echo get_string('knowledge_dummy',
-//                                                                'groupformation'); ?><!-- 3-->
-<!--                                                    </option>-->
-<!--                                                </select>-->
-<!---->
-<!--                                            </td>-->
-<!--                                        </tr>-->
-<!--                                        </tbody>-->
-<!--                                    </table>-->
-<!--                                </div>-->
                                 <!-- End: Preview select-->
                                 <!-- Start: Preview Multi select-->
                                 <div class="col_m_100" id="oobMultiPreview" style="display:none;">
@@ -368,8 +318,22 @@ defined('MOODLE_INTERNAL') || die();
                                             <th id="oobquestionPreviewMulti" scope="row">
                                                 <?php echo get_string('no_oob_question', 'groupformation'); ?>
                                             </th>
-
                                             <td class="range">
+<!--                                                <div id="oobpreviewddMulti">-->
+<!--                                                    <div class="oobRowMulti" id="oobRow0Multi">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                    <div class="oobRowMulti" id="oobRow1Multi">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                    <div class="oobRowMulti" id="oobRow2Multi">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                </div>-->
+
                                                 <select multiple class="oobpreviewddMulti" id="oobpreviewddMulti">
                                                     <option class="oobRowMulti" id="oobRow0Multi">
                                                         <?php echo get_string('knowledge_dummy',
@@ -533,8 +497,8 @@ defined('MOODLE_INTERNAL') || die();
                                                     </span>
                                                 <input type="range" min="0" max="100" value="0"/>
                                                 <span>
-                                                        100
-                                                    </span>
+                                                    100
+                                                </span>
                                             </td>
                                         </tr>
                                         </tbody>
