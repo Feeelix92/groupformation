@@ -202,7 +202,7 @@ class mod_groupformation_multiselect_question extends mod_groupformation_basic_q
 
         // deletes double entries
         $uniqueAnswers = array_unique($multipleAnswers);
-        
+
         // sorts the array
         sort($uniqueAnswers);
 
