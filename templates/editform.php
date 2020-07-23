@@ -142,14 +142,16 @@ defined('MOODLE_INTERNAL') || die();
 
                 <br/>
                 <br/>
-                <!-- <div id="oob_multiselect_box oob_in_preview">-->
-                <!-- <h5>--><?php // echo get_string('choose_type', 'groupformation'); ?><!--</h5>-->
-                <!-- <p>--><?php // echo get_string('decide_multiselect', 'groupformation'); ?><!--</p>-->
-                <!-- <label class="gf_label" for="id_js_binquestionmultiselect">-->
-                <!-- <input type="checkbox" id="id_js_binquestionmultiselect"  value="wantMultiselect" />-->
-                <!-- --><?php // echo get_string('multiselect', 'groupformation'); ?>
-                <!-- </label>-->
-                <!-- </div>-->
+                <!-- Start: Multi select-->
+                 <div id="oob_multiselect_box oob_in_preview">
+                 <h5><?php  echo get_string('choose_type', 'groupformation'); ?></h5>
+                 <p><?php  echo get_string('decide_multiselect', 'groupformation'); ?></p>
+                 <label class="gf_label" for="id_js_binquestionmultiselect">
+                 <input type="checkbox" id="id_js_binquestionmultiselect"  value="wantMultiselect" />
+                 <?php  echo get_string('multiselect', 'groupformation'); ?>
+                 </label>
+                 </div>
+                <!-- End: Multi select-->
 
                 <div class="grid">
                     <div id="oob">
@@ -237,6 +239,7 @@ defined('MOODLE_INTERNAL') || die();
                                 <h5>
                                     <?php echo get_string('preview', 'groupformation'); ?>
                                 </h5>
+                                <!-- Start: Preview select-->
                                 <div class="col_m_100" id="oobPreview">
                                     <table class="responsive-table">
                                         <colgroup>
@@ -259,8 +262,21 @@ defined('MOODLE_INTERNAL') || die();
                                                     <?php echo get_string('no_oob_question', 'groupformation'); ?>
                                                 </p>
                                             </th>
-
                                             <td class="range">
+<!--                                                <div id="oobpreviewdd">-->
+<!--                                                    <div class="oobRow" id="oobRow0">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                    <div class="oobRow" id="oobRow1">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                    <div class="oobRow" id="oobRow2">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                            --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                </div>-->
                                                 <select id="oobpreviewdd">
                                                     <option class="oobRow" id="oobRow0">
                                                         <?php echo get_string('knowledge_dummy',
@@ -275,13 +291,13 @@ defined('MOODLE_INTERNAL') || die();
                                                                 'groupformation'); ?> 3
                                                     </option>
                                                 </select>
-
                                             </td>
                                         </tr>
                                         </tbody>
                                     </table>
                                 </div>
-
+                                <!-- End: Preview select-->
+                                <!-- Start: Preview Multi select-->
                                 <div class="col_m_100" id="oobMultiPreview" style="display:none;">
                                     <table class="responsive-table">
                                         <colgroup>
@@ -302,8 +318,22 @@ defined('MOODLE_INTERNAL') || die();
                                             <th id="oobquestionPreviewMulti" scope="row">
                                                 <?php echo get_string('no_oob_question', 'groupformation'); ?>
                                             </th>
-
                                             <td class="range">
+<!--                                                <div id="oobpreviewddMulti">-->
+<!--                                                    <div class="oobRowMulti" id="oobRow0Multi">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                    <div class="oobRowMulti" id="oobRow1Multi">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                    <div class="oobRowMulti" id="oobRow2Multi">-->
+<!--                                                        <input type="checkbox">-->
+<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
+<!--                                                    </div>-->
+<!--                                                </div>-->
+
                                                 <select multiple class="oobpreviewddMulti" id="oobpreviewddMulti">
                                                     <option class="oobRowMulti" id="oobRow0Multi">
                                                         <?php echo get_string('knowledge_dummy',
@@ -324,7 +354,7 @@ defined('MOODLE_INTERNAL') || die();
                                         </tbody>
                                     </table>
                                 </div>
-
+                                <!-- End: Preview Multi select-->
                             </div>
                         </div>
                     </div>
@@ -467,8 +497,8 @@ defined('MOODLE_INTERNAL') || die();
                                                     </span>
                                                 <input type="range" min="0" max="100" value="0"/>
                                                 <span>
-                                                        100
-                                                    </span>
+                                                    100
+                                                </span>
                                             </td>
                                         </tr>
                                         </tbody>

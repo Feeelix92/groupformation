@@ -186,12 +186,35 @@ class mod_groupformation_multiselect_question extends mod_groupformation_basic_q
     }
 
     /**
-     * Returns random answer (hardcoded)
+     * Returns n random answers
      *
      * @return mixed|string
      */
     public function create_random_answer() {
-        return "1,2";
+        $possibleAnswers = rand(1, count($this->options));
+        $multipleAnswers = array();
+        $returnAnswers = '';
+
+        // saves n random numbers
+        for ($answers = 1; $answers <= $possibleAnswers; $answers++){
+            $multipleAnswers[$answers] = rand(1, count($this->options));
+        }
+
+        // deletes double entries
+        $uniqueAnswers = array_unique($multipleAnswers);
+
+        // sorts the array
+        sort($uniqueAnswers);
+
+        // saves the created random numbers as Strings
+        for ($i = 1; $i <= count($uniqueAnswers); $i++) {
+            if ($i < count($uniqueAnswers) && $uniqueAnswers[$i+1] != null){
+                $returnAnswers .= strval($uniqueAnswers[$i] . ',');
+            }else{
+                $returnAnswers .= strval($uniqueAnswers[$i]);
+            }
+        }
+        return $returnAnswers;
     }
 }
 

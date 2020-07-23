@@ -139,6 +139,7 @@ require(['jquery', 'jqueryui'], function($) {
         });
 
 
+
         // Importance Slider update oob.
         function oobChangeImpSelVal(value){
 
@@ -439,8 +440,21 @@ require(['jquery', 'jqueryui'], function($) {
                     .appendTo('#previewTopics').html('<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>').append(document.createTextNode(value));
             }
             if (cat == 'oob'){
+                $oobContainer = document.createElement('div');
+
+                $oobCheckbox = document.createElement('input');
+                $oobCheckbox.type = 'checkbox';
+                $oobCheckbox.value = value;
+                $($oobCheckbox).appendTo($oobContainer);
+
+                $oobLabelElement = document.createElement('label');
+                $($oobLabelElement).text(value).appendTo($oobContainer);
+
+
+                // $($oobContainer).appendTo('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd');
                 $('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd').text(value);
                 $('.oobRowMulti:first-child', '#oobpreviewddMulti').clone(true).attr('id', $previewRowID +'Multi').appendTo('#oobpreviewddMulti').text(value);
+                // $($oobContainer).appendTo('.oobRowMulti:first-child', '#oobpreviewddMulti').clone(true).attr('id', $previewRowID +'Multi').appendTo('#oobpreviewddMulti');
             }
         }
 
@@ -581,6 +595,7 @@ require(['jquery', 'jqueryui'], function($) {
                     $('#oobMultiPreview').hide();
                     $('#oobPreview').show();
                 }
+
 
                 // Get the value of Moodle nativ field #id_binquestionlines, parse it and create dynamic input fields.
                 var lines = $('textarea[name=binquestionlines]').val().split('\n');
