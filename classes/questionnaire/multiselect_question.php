@@ -191,24 +191,27 @@ class mod_groupformation_multiselect_question extends mod_groupformation_basic_q
      * @return mixed|string
      */
     public function create_random_answer() {
-        $possibleAnswers = rand(1, count($this->options));
-        $multipleAnswers = array();
+        $numberOfAnswers = rand(1, count($this->options));
+        $createdAnswers = array();
         $returnAnswers = '';
 
         // saves n random numbers
-        for ($answers = 1; $answers <= $possibleAnswers; $answers++){
-            $multipleAnswers[$answers] = rand(1, count($this->options));
+        for ($answers = 1; $answers <= $numberOfAnswers; $answers++){
+            $createdAnswers[$answers] = rand(1, count($this->options));
         }
 
         // deletes double entries
-        $uniqueAnswers = array_unique($multipleAnswers);
+        $uniqueAnswers = array_unique($createdAnswers);
 
         // sorts the array
         sort($uniqueAnswers);
 
-        // saves the created random numbers as Strings
-        for ($i = 1; $i <= count($uniqueAnswers); $i++) {
-            if ($i < count($uniqueAnswers) && $uniqueAnswers[$i+1] != null){
+        // length of the $uniqueAnswers array
+        $uniqueAnswersLength = count($uniqueAnswers);
+
+        // saves the created random numbers as String
+        for ($i = 1; $i <= $uniqueAnswersLength; $i++) {
+            if ($i < $uniqueAnswersLength && $uniqueAnswers[$i+1] != null){
                 $returnAnswers .= strval($uniqueAnswers[$i] . ',');
             }else{
                 $returnAnswers .= strval($uniqueAnswers[$i]);
