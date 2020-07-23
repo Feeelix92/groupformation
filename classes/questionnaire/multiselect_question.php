@@ -191,13 +191,14 @@ class mod_groupformation_multiselect_question extends mod_groupformation_basic_q
      * @return mixed|string
      */
     public function create_random_answer() {
-        $numberOfAnswers = rand(1, count($this->options));
+        $maxAnswers = count($this->options);
+        $numberOfAnswers = rand(1, $maxAnswers);
         $createdAnswers = array();
         $returnAnswers = '';
 
         // saves n random numbers
-        for ($answers = 1; $answers <= $numberOfAnswers; $answers++){
-            $createdAnswers[$answers] = rand(1, count($this->options));
+        for ($answers = 0; $answers < $numberOfAnswers; $answers++){
+            $createdAnswers[$answers] = rand(1, $maxAnswers);
         }
 
         // deletes double entries
@@ -210,7 +211,7 @@ class mod_groupformation_multiselect_question extends mod_groupformation_basic_q
         $uniqueAnswersLength = count($uniqueAnswers);
 
         // saves the created random numbers as String
-        for ($i = 1; $i <= $uniqueAnswersLength; $i++) {
+        for ($i = 0; $i < $uniqueAnswersLength; $i++) {
             if ($i < $uniqueAnswersLength && $uniqueAnswers[$i+1] != null){
                 $returnAnswers .= strval($uniqueAnswers[$i] . ',');
             }else{
