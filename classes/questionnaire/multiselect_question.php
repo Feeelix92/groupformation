@@ -207,17 +207,9 @@ class mod_groupformation_multiselect_question extends mod_groupformation_basic_q
         // sorts the array
         sort($uniqueAnswers);
 
-        // length of the $uniqueAnswers array
-        $uniqueAnswersLength = count($uniqueAnswers);
-
         // saves the created random numbers as String
-        for ($i = 0; $i < $uniqueAnswersLength; $i++) {
-            if ($i < $uniqueAnswersLength && $uniqueAnswers[$i+1] != null){
-                $returnAnswers .= strval($uniqueAnswers[$i] . ',');
-            }else{
-                $returnAnswers .= strval($uniqueAnswers[$i]);
-            }
-        }
+        $returnAnswers = implode(",", $uniqueAnswers);
+
         return $returnAnswers;
     }
 }
