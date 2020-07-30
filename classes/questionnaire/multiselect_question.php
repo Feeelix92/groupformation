@@ -175,11 +175,11 @@ class mod_groupformation_multiselect_question extends mod_groupformation_basic_q
         $parameter = $this->category . $this->questionid;
 
         $answer = optional_param_array($parameter, array(), PARAM_RAW);
-        $answer = 'list:' . implode(",", $answer);
+        $answer = implode(",", $answer);
 
-        if (isset($answer) && $answer == 'list:') {
+        if (isset($answer) && $answer == null) {
             return array('delete', null);
-        } else if (isset($answer) && $answer != 'list:') {
+        } else if (isset($answer) && $answer != null) {
             return array('save', $answer);
         }
         return null;
@@ -194,7 +194,6 @@ class mod_groupformation_multiselect_question extends mod_groupformation_basic_q
         $maxAnswers = count($this->options);
         $numberOfAnswers = rand(1, $maxAnswers);
         $createdAnswers = array();
-        $returnAnswers = '';
 
         // saves n random numbers
         for ($answers = 0; $answers < $numberOfAnswers; $answers++){
