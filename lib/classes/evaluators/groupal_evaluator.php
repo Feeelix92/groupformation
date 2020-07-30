@@ -184,8 +184,8 @@ class mod_groupformation_evaluator implements mod_groupformation_ievaluator {
      *  Calculates normalized pair performance
      *
      *  homogeneous criteria->subtract values-> the smaller the better
-     *  heterogeneous criteria->subtract values->the biger the better
-     *  the difference: heterogeneous value - homogeneous is the return value the biger the better
+     *  heterogeneous criteria->subtract values->the bigger the better
+     *  the difference: heterogeneous value - homogeneous is the return value the bigger the better
      *  normalize by the best possible GroupPerformanceIndex
      *              (the difference of a perfect homogeneous pair of values is 0)
      *              (the difference of a perfect heterogeneous pair of value is 1)
