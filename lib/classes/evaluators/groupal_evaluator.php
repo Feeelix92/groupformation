@@ -236,7 +236,7 @@ class mod_groupformation_evaluator implements mod_groupformation_ievaluator {
             }
 
             // Calculate the specific distance
-            // and normalize the distanze over the maximal amount of dimensions so every criterion gets a value between 0 and 1.
+            // and normalize the distance over the maximal amount of dimensions so every criterion gets a value between 0 and 1.
             // (otherwise the criterion will be unthought weighted ).
             $distancename = "mod_groupformation_" . $c1->get_distance();
             $tempdistance = new $distancename;

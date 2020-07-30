@@ -31,7 +31,7 @@ if (!defined('MOODLE_INTERNAL')) {
 
 require_once($CFG->dirroot . "/mod/groupformation/lib/classes/evaluators/idistance.php");
 require_once($CFG->dirroot . "/mod/groupformation/lib/classes/criteria/criterion.php");
-require_once($CFG->dirroot . "/mod/groupformation/lib/classes/criteria/one_of_bin_criterion.php");
+require_once($CFG->dirroot . "/mod/groupformation/lib/classes/criteria/many_of_bin_criterion.php");
 
 /**
  * Class mod_groupformation_many_bin_distance
