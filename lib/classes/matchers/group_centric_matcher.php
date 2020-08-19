@@ -69,8 +69,8 @@ class mod_groupformation_group_centric_matcher implements mod_groupformation_ima
                 for ($i = 0; $i < count($notyetmatched); $i++) {
 
                     if (count($g->get_participants()) == 0) {
-                        $randomparticipiant = rand(0, count($notyetmatched)-1);
-                        $bestparticipant = $notyetmatched[$randomparticipiant];  // XXX: THis can be improved by selecting a random element...
+                        $randomparticipant = rand(0, count($notyetmatched)-1); // select a random number for the randomparticipant
+                        $bestparticipant = $notyetmatched[$randomparticipant];  // save the random participant
                         break; // end search as the group was empty anyway..
                     }
 
