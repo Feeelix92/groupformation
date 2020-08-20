@@ -139,14 +139,15 @@ class mod_groupformation_multiselect_question extends mod_groupformation_basic_q
         }
 
         $s .= '<td colspan="100%" class="freetext">';
-        $s .= '<div class="form-group">';
-        $s .= '<select multiple class="freetext-textarea form-control" name="';
-        $s .= $category . $questionid . '[]" style="width: 80%;">';
+        $s .= '<div class="form-check" style="text-align:left">';
         foreach ($options as $key => $option) {
-            $s .= '<option value="' . $key . '" ' . ((in_array($key, $answers)) ? 'selected' : '') . '>' . $option . '</option>';
+            $s .= '<label class="form-check-label">';
+            $s .= ' <input class="freetext-checkbox" type="checkbox" name="'.$category . $questionid . '[]" value="' . $key . '" ' . ((in_array($key, $answers)) ? 'checked' : '') . ' >' ." ". $option . '</input>';
+            $s .= '</label>';
+            $s .= '<br>';
         }
-        $s .= '  </select>';
         $s .= '</div>';
+
         if (!$required) {
             $s .= '<br>';
             $s .= '<div class="form-check">';

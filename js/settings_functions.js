@@ -440,21 +440,26 @@ require(['jquery', 'jqueryui'], function($) {
                     .appendTo('#previewTopics').html('<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>').append(document.createTextNode(value));
             }
             if (cat == 'oob'){
-                $oobContainer = document.createElement('div');
 
-                $oobCheckbox = document.createElement('input');
-                $oobCheckbox.type = 'checkbox';
-                $oobCheckbox.value = value;
-                $($oobCheckbox).appendTo($oobContainer);
-
+                $oobDivElement = document.createElement('div');
                 $oobLabelElement = document.createElement('label');
-                $($oobLabelElement).text(value).appendTo($oobContainer);
+                $oobCheckbox = document.createElement('input');
+                $oobDescription = document.createTextNode(value);
 
+                $oobCheckbox.type = 'checkbox';
+                $oobCheckbox.name = 'test[]';
+                $oobCheckbox.value = 'value' + theID;
+                $oobCheckbox.style.marginRight = '5px';
 
-                // $($oobContainer).appendTo('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd');
-                $('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd').text(value);
-                $('.oobRowMulti:first-child', '#oobpreviewddMulti').clone(true).attr('id', $previewRowID +'Multi').appendTo('#oobpreviewddMulti').text(value);
-                // $($oobContainer).appendTo('.oobRowMulti:first-child', '#oobpreviewddMulti').clone(true).attr('id', $previewRowID +'Multi').appendTo('#oobpreviewddMulti');
+                $oobLabelElement.appendChild($oobCheckbox);
+                $oobLabelElement.appendChild($oobDescription);
+
+                $oobDivElement.appendChild($oobLabelElement);
+
+                if(value) {
+                    $('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd').text(value);
+                    $('.oobRowMulti:first-child', '#oobpreviewddMulti').clone(true).attr('id', $previewRowID + 'Multi').appendTo('#oobpreviewddMulti').html($oobDivElement);
+                }
             }
         }
 
@@ -630,7 +635,6 @@ require(['jquery', 'jqueryui'], function($) {
                 }
 
                 var value = parseInt($('#id_binquestionimportance').val());
-                console.log(value);
                 if (value >= 0 && value <= 10){
                     $('#id_js_oneofbinimportance').val(value);
                     oobChangeImpSelVal(value);

@@ -319,36 +319,20 @@ defined('MOODLE_INTERNAL') || die();
                                                 <?php echo get_string('no_oob_question', 'groupformation'); ?>
                                             </th>
                                             <td class="range">
-<!--                                                <div id="oobpreviewddMulti">-->
-<!--                                                    <div class="oobRowMulti" id="oobRow0Multi">-->
-<!--                                                        <input type="checkbox">-->
-<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
-<!--                                                    </div>-->
-<!--                                                    <div class="oobRowMulti" id="oobRow1Multi">-->
-<!--                                                        <input type="checkbox">-->
-<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
-<!--                                                    </div>-->
-<!--                                                    <div class="oobRowMulti" id="oobRow2Multi">-->
-<!--                                                        <input type="checkbox">-->
-<!--                                                        --><?php //echo get_string('knowledge_dummy', 'groupformation'); ?>
-<!--                                                    </div>-->
-<!--                                                </div>-->
-
-                                                <select multiple class="oobpreviewddMulti" id="oobpreviewddMulti">
-                                                    <option class="oobRowMulti" id="oobRow0Multi">
-                                                        <?php echo get_string('knowledge_dummy',
-                                                                'groupformation'); ?> 1
-                                                    </option>
-                                                    <option class="oobRowMulti" id="oobRow1Multi">
-                                                        <?php echo get_string('knowledge_dummy',
-                                                                'groupformation'); ?> 2
-                                                    </option>
-                                                    <option class="oobRowMulti" id="oobRow2Multi">
-                                                        <?php echo get_string('knowledge_dummy',
-                                                                'groupformation'); ?> 3
-                                                    </option>
-                                                </select>
-
+                                                <div id="oobpreviewddMulti">
+                                                    <div class="oobRowMulti" id="oobRow0Multi">
+                                                        <input type="checkbox">
+                                                        <?php echo get_string('knowledge_dummy', 'groupformation'); ?>
+                                                    </div>
+                                                    <div class="oobRowMulti" id="oobRow1Multi">
+                                                        <input type="checkbox">
+                                                        <?php echo get_string('knowledge_dummy', 'groupformation'); ?>
+                                                    </div>
+                                                    <div class="oobRowMulti" id="oobRow2Multi">
+                                                        <input type="checkbox">
+                                                        <?php echo get_string('knowledge_dummy', 'groupformation'); ?>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         </tbody>
