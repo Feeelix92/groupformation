@@ -135,24 +135,21 @@ defined('MOODLE_INTERNAL') || die();
                 </label>
             </div>
             <div class="gf_pad_content" id="js_oneOfBinWrapper" style="display:none;">
-                <p class="oob_in_preview" id="oneOfBinInfoText"><?php echo get_string('choose_oob_answers',
-                            'groupformation'); ?></p>
-                <input type="text" class="respwidth oob_in_preview" id="js_oob_question"
+                <!-- Start: Multi select-->
+                <div id="oob_multiselect_box oob_in_preview">
+                    <h5><?php  echo get_string('choose_type', 'groupformation'); ?></h5>
+                    <p><?php  echo get_string('decide_multiselect', 'groupformation'); ?></p>
+                    <label class="gf_label" for="id_js_binquestionmultiselect">
+                        <input type="checkbox" id="id_js_binquestionmultiselect"  value="wantMultiselect" />
+                        <?php  echo get_string('multiselect', 'groupformation'); ?>
+                    </label>
+                </div>
+                <!-- End: Multi select-->
+               <input type="text" class="respwidth oob_in_preview" id="js_oob_question"
                        placeholder="<?php echo get_string('add_oob_question', 'groupformation'); ?>" style="width: 80%"/>
 
                 <br/>
                 <br/>
-                <!-- Start: Multi select-->
-                 <div id="oob_multiselect_box oob_in_preview">
-                 <h5><?php  echo get_string('choose_type', 'groupformation'); ?></h5>
-                 <p><?php  echo get_string('decide_multiselect', 'groupformation'); ?></p>
-                 <label class="gf_label" for="id_js_binquestionmultiselect">
-                 <input type="checkbox" id="id_js_binquestionmultiselect"  value="wantMultiselect" />
-                 <?php  echo get_string('multiselect', 'groupformation'); ?>
-                 </label>
-                 </div>
-                <!-- End: Multi select-->
-
                 <div class="grid">
                     <div id="oob">
                         <div class="multi_field_wrapper persist-area">
@@ -160,6 +157,8 @@ defined('MOODLE_INTERNAL') || die();
                                 <h5>
                                     <?php echo get_string('answers', 'groupformation'); ?>
                                 </h5>
+                                <p class="oob_in_preview" id="oneOfBinInfoText"><?php echo get_string('choose_oob_answers',
+                                            'groupformation'); ?></p>
                                 <div class="multi_fields oob_in_preview">
                                     <div class="multi_field" id="inputoob0">
                                         <input class="respwidth js_oneofbinInput" type="text">
