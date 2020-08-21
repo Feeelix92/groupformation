@@ -240,8 +240,25 @@ require(['jquery', 'jqueryui'], function($) {
                     setGroupSettings();
                 }
                 if (cat == 'oob'){
+
+                    //Single choice dropdown preview
                     $('#' + $previewRowID).text($(this).val());
-                    $('#' + $previewRowID + 'Multi').text($(this).val());
+
+                    //Multi-select checkbox preview
+                    document.getElementById('oobpreviewddMulti').style.textAlign = "left";
+
+                    $previewOobLabelElement = document.createElement('label');
+                    $previewOobCheckbox = document.createElement("input");
+                    $previewOobDescription = document.createTextNode($(this).val());
+
+                    $previewOobCheckbox.type = 'checkbox';
+                    $previewOobCheckbox.style.marginRight = '5px';
+
+                    $previewOobLabelElement.appendChild($previewOobCheckbox);
+                    $previewOobLabelElement.appendChild($previewOobDescription);
+
+                    $('#' + $previewRowID + 'Multi').html($previewOobLabelElement);
+
                     synchronizeoob();
                 }
             });
@@ -440,6 +457,7 @@ require(['jquery', 'jqueryui'], function($) {
                     .appendTo('#previewTopics').html('<span class="ui-icon ui-icon-arrowthick-2-n-s"></span>').append(document.createTextNode(value));
             }
             if (cat == 'oob'){
+                document.getElementById('oobpreviewddMulti').style.textAlign = "left";
 
                 $oobDivElement = document.createElement('div');
                 $oobLabelElement = document.createElement('label');
@@ -447,7 +465,7 @@ require(['jquery', 'jqueryui'], function($) {
                 $oobDescription = document.createTextNode(value);
 
                 $oobCheckbox.type = 'checkbox';
-                $oobCheckbox.name = 'test[]';
+                $oobCheckbox.name = 'oobCheckbox[]';
                 $oobCheckbox.value = 'value' + theID;
                 $oobCheckbox.style.marginRight = '5px';
 
@@ -456,9 +474,11 @@ require(['jquery', 'jqueryui'], function($) {
 
                 $oobDivElement.appendChild($oobLabelElement);
 
+                $('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd').text(value);
                 if(value) {
-                    $('.oobRow:first-child', '#oobpreviewdd').clone(true).attr('id', $previewRowID).appendTo('#oobpreviewdd').text(value);
                     $('.oobRowMulti:first-child', '#oobpreviewddMulti').clone(true).attr('id', $previewRowID + 'Multi').appendTo('#oobpreviewddMulti').html($oobDivElement);
+                }else{
+                    $('.oobRowMulti:first-child', '#oobpreviewddMulti').clone(true).attr('id', $previewRowID + 'Multi').appendTo('#oobpreviewddMulti').text(value);
                 }
             }
         }
