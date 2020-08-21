@@ -259,7 +259,7 @@ class mod_groupformation_evaluator implements mod_groupformation_ievaluator {
         // therfore the worst possible value for hom criteria is added to the pairperformanceindex: and the target.
         // set lies between 0 and 1.
         $hommaxdist = 0.0; // Float.
-        // Beacuse i normalize each distance of two criterions over their highest possible value.
+        // Because i normalize each distance of two criterions over their highest possible value.
         // here i neede to normalize pairperformanceindex by the count of the Criterions multiplied by its weight.
         foreach ($p1->get_criteria() as $c) {
             if ($c->is_homogeneous()) {
