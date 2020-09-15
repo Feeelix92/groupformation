@@ -49,10 +49,11 @@ class mod_groupformation_group_centric_matcher implements mod_groupformation_ima
      */
     public function match_to_groups(&$notyetmatched, &$groups) {
         $deltaold = -INF;
-        $bestparticipant = null; // Participant instance to add.
+        $nextparticipant = null; // Participant instance to add.
 
         // Search the best participant for the group.
         foreach ($groups as $g) {
+            $randomparticipant = null;
 
             for ($j = 0; $j < mod_groupformation_group::get_group_members_max_size(); $j++) {
                 // Loop for a max of n rounds to fill up.
@@ -64,14 +65,17 @@ class mod_groupformation_group_centric_matcher implements mod_groupformation_ima
                     break;
                 }
 
-                $bestparticipant = $notyetmatched[0]; // Start with next best candidate
+                $nextparticipant = $notyetmatched[0]; // Start with next best candidate
                 // Then loop and find better candidates.
                 for ($i = 0; $i < count($notyetmatched); $i++) {
 
                     if (count($g->get_participants()) == 0) {
-                        $randomparticipant = rand(0, count($notyetmatched)-1); // select a random number for the randomparticipant
-                        $bestparticipant = $notyetmatched[$randomparticipant];  // save the random participant
-                        break; // end search as the group was empty anyway..
+                        // saves a random participant
+                        $randomparticipant = $notyetmatched[rand(0, count($notyetmatched)-1)];
+                        // saves the random partcicipant as nextparticipant
+                        $nextparticipant = $randomparticipant;
+                        // end search as the group was empty anyway..
+                        break;
                     }
 
                     // Get the current gpi of the group.
@@ -91,19 +95,21 @@ class mod_groupformation_group_centric_matcher implements mod_groupformation_ima
 
                     // If for this group performance increase the most than safe the new candidate.
                     if ($delta > $deltaold) {
-                        $bestparticipant = $notyetmatched[$i];
+                        $nextparticipant = $notyetmatched[$i];
                         $deltaold = $delta;
                     }
                 }
 
-                // Now best participant is the participant with the best performance increase for the group.
+                // Now the next participant is the best participant with the best performance increase for the group.
+                // or a random participant, if the group was empty
                 $deltaold = -INF;
-                $g->add_participant($bestparticipant);
-                // Remove bestparticipant from $notYetMatched-List.
-                array_splice($notyetmatched, array_search($bestparticipant, $notyetmatched), 1);
+
+                $g->add_participant($nextparticipant);
+
+                // Remove $nextparticipant from $notYetMatched-List.
+                array_splice($notyetmatched, array_search($nextparticipant, $notyetmatched), 1);
             }
         }
         return $groups;
     }
-
 }

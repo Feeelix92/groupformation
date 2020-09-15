@@ -59,6 +59,9 @@ abstract class mod_groupformation_criterion {
     /** @var string  */
     protected $property = "";
 
+    /** @var bool  */
+    public static $many_of_bin_criterion = false;
+
     /**
      * get property
      *
@@ -235,6 +238,24 @@ abstract class mod_groupformation_criterion {
      */
     public function get_weight() {
         return mod_groupformation_criterion_weight::get_weight($this->name);
+    }
+
+    /**
+     * Returns if there is a many-of bin criterion
+     *
+     * @return boolean
+     */
+    public static function has_many_of_bin_criterion() {
+        return static::$many_of_bin_criterion;
+    }
+
+    /**
+     * Sets many_of_bin_criterion true if there is a many-of bin criterion
+     *
+     * @param bool $bool
+     */
+    public static function set_many_of_bin_criterion($bool) {
+        static::$many_of_bin_criterion = $bool;
     }
 
 }

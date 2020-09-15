@@ -57,5 +57,6 @@ class mod_groupformation_many_of_bin_criterion extends mod_groupformation_criter
         $this->set_values($valuearray);
         $this->set_distance($distance);
         mod_groupformation_criterion_weight::add_if_not_allready_exist($name, $weight);
+        mod_groupformation_criterion::set_many_of_bin_criterion(true);
     }
 }

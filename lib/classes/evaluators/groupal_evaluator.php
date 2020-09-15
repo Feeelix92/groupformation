@@ -83,7 +83,7 @@ class mod_groupformation_evaluator implements mod_groupformation_ievaluator {
             return 0;
         }
 
-        // Calculate npi for every pair of entries in the  group g (but not double and not compare with oneself!)
+        // Calculate npi for every pair of entries in the group g (but not double and not compare with oneself!)
         for ($i = 0;
                 $i < $participantcount - 1;
                 $i++) {

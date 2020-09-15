@@ -186,8 +186,9 @@ defined('MOODLE_INTERNAL') || die();
                                     <h5>
                                         <?php echo get_string('importance', 'groupformation'); ?>
                                     </h5>
-                                    <p id="gf_one_of_bin_Importance"><?php echo get_string('oob_selected_value',
-                                                'groupformation'); ?></p>
+                                    <p id="gf_one_of_bin_Importance">
+                                        <?php echo get_string('oob_selected_value', 'groupformation'); ?>
+                                    </p>
                                     <p><?php echo get_string('choose_oob_importance', 'groupformation'); ?></p>
 
                                     <div>

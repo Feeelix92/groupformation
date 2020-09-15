@@ -51,25 +51,34 @@ class mod_groupformation_many_bin_distance implements mod_groupformation_idistan
      * @param mod_groupformation_criterion $cr2
      * @return float|number
      */
-    private function get_distance(mod_groupformation_criterion $cr1, mod_groupformation_criterion $cr2) {
-
-        $distance = 0.0;
+     private function get_distance(mod_groupformation_criterion $cr1, mod_groupformation_criterion $cr2) {
         $index = 0;
+        $distance = 1.0;
 
-        foreach ($cr1->get_values() as $p) {
-            if ($p == 1) {
-                // get the distance between these two values
-                $d = strcmp($p, $cr2->get_value($index));
-                // if the values are NOT equals then increase the distance variable by one
-                if ($d != 0) {
-                    $distance += 1.0;
+        foreach ($cr1->get_values() as $p1) {
+            if ($p1 == 1) {
+                // get the value of the second participant
+                $p2 = $cr2->get_value($index);
+
+                // save the answer String of both participants as arrays
+                $answersP1 = explode(",", $p1);
+                $answersP2 = explode(",", $p2);
+
+                // computes the intersection of both answer arrays
+                $match = array_intersect($answersP1, $answersP2);
+
+                // if there are equal values
+                if ($match != null) {
+                    // return the distance of 1
+                    return $distance;
                 }
             }
-            $index += 1;
+            $index++;
         }
-        // divide the distance variable by ALL values
-        return $distance / count($cr1->get_values());
+        // return the distance of 0
+        return 0;
     }
+
 
     /**
      * Both given crtieria must be of same type and same number of values.

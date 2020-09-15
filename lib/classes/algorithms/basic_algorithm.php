@@ -130,16 +130,113 @@ class mod_groupformation_basic_algorithm implements mod_groupformation_ialgorith
         $this->notmatchedparticipants[] = $participant;
         return true;
     }
+    /**
+     * This method is used to calculate the frequency of each bin
+     *
+     * @param $participants
+     * @return array
+     */
+    public function calc_manyOfBin_stats($participants){
+        $merge_array = array();
+        foreach ($participants as $participant){
+            foreach ($participant->get_criteria() as $criterion){
+                if (strcmp(get_class($criterion), "mod_groupformation_many_of_bin_criterion") == 0){
+                    // saves the many-of bin answers in the $answers array
+                    $answers = explode(",",$criterion->get_value(0));
+                    // saves all answers of all participants in one array
+                    $merge_array = array_merge($merge_array, $answers);
+                }
+            }
+        }return array_count_values($merge_array);
+    }
+
+    /**
+     * This method returns the index of the most common bin in the statistics array
+     *
+     * @param array $statistic
+     * @return int
+     */
+    public function index_most_common_bin($statistic){
+        return array_search(max($statistic), $statistic);
+    }
+
+    /**
+     * This method returns the index of the least common bin in the statistics array
+     *
+     * @param array $statistic
+     * @return int
+     */
+    public function index_least_common_bin($statistic){
+        return array_search(min($statistic), $statistic);
+    }
+
+    /**
+     * This method returns an array of three arrays with the participants with common selected bins,
+     * the remaining participants and the statistics of the actual participants
+     *
+     * @param array $participants
+     * @param String $common_bin_method
+     * @return array
+     */
+    public function sort_by_bin_answer($participants, $common_bin_method){
+        $common_bin_participants = array();
+        $remaining_participants = array();
+        $statistic = $this->calc_manyOfBin_stats($participants);
+        if($common_bin_method == 'most'){
+            $common_bin_index = $this->index_most_common_bin($statistic);
+        }else{
+            $common_bin_index = $this->index_least_common_bin($statistic);
+        }
+        for($i = 0; $i < count($participants); $i++){
+            foreach ($participants[$i]->get_criteria() as $criterion){
+                if (strcmp(get_class($criterion), "mod_groupformation_many_of_bin_criterion") == 0){
+                    // saves the many-of bin answers in the $answers array
+                    $answers = explode(",",$criterion->get_value(0));
+                    if(in_array($common_bin_index, $answers)){
+                        $common_bin_participants[] = $participants[$i];
+                    }else{
+                        $remaining_participants[] = $participants[$i];
+                    }
+                }
+            }
+        }
+        return array('common_bin' => $common_bin_participants, 'remaining'=> $remaining_participants, 'statistic'=>$statistic);
+    }
 
     /**
      *  The main method to call for getting a formation "run" (this takes a while)
-     *  Uses the global set matcher to assign evry not yet matched participant to a group
+     *  Uses the global set matcher to assign every not yet matched participant to a group
      *
      * @return mod_groupformation_cohort
      * @throws Exception
      */
     public function do_one_formation() {
-        $this->matcher->match_to_groups($this->notmatchedparticipants, $this->cohort->groups);
+        // checks if the first participant has a many-of bin criterion
+        if(mod_groupformation_criterion::has_many_of_bin_criterion()){
+            $participants = $this->notmatchedparticipants;
+            $statistic = $this->calc_manyOfBin_stats($participants);
+            $countofgroups = count($this->cohort->groups);
+            $slice_start = 0;
+
+            for ($i = 0; $i < count($statistic); $i++) {
+                $sorted_participants = $this->sort_by_bin_answer($participants, 'least');
+                $required_groups = ceil(count($sorted_participants['common_bin']) / $this->groupsize);
+                $countofgroups -= $required_groups;
+
+                if($countofgroups < 0){
+                    for ($j = 0; $j < abs($countofgroups); $j++){
+                        $this->cohort->add_empty_group();
+                    }
+                    $countofgroups = 0;
+                }
+                $slice_groups = array_slice($this->cohort->groups, $slice_start, $required_groups);
+                $slice_start += $required_groups;
+                $this->matcher->match_to_groups($sorted_participants['common_bin'], $slice_groups);
+                $participants = $sorted_participants['remaining'];
+            }
+        }else {
+            $this->matcher->match_to_groups($this->notmatchedparticipants, $this->cohort->groups);
+        }
         $this->cohort->countofgroups = count($this->cohort->groups);
         $this->cohort->whichmatcherused = get_class($this);
         $this->cohort->calculate_cpi();
