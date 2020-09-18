@@ -56,7 +56,7 @@ class mod_groupformation_bin_distance implements mod_groupformation_idistance {
         $index = 0;
 
         foreach ($cr1->get_values() as $p) {
-            if ($p == 1) {
+            if ($p != null) {
                 // get the distance between these two values
                 $distance = strcmp($p, $cr2->get_value($index));
                 // if the values are equals then return distance of 0
